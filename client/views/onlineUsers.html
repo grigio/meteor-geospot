@@ -1,0 +1,11 @@
+<template name="onlineUsers">
+{{#each onlineUsers}}
+  {{> onlineUser}}
+{{/each}}
+</template>
+
+<template name="onlineUser">
+<p>
+  {{_id}} - {{ username }} - status: {{ status_message }}
+</p>
+</template>

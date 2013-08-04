@@ -1,0 +1,18 @@
+<template name="messages">
+  <div class="header pure-u-1">
+      <h1 class="pure-u-1">Messages</h1>
+      <h2 class="pure-u">Quickstart your next web project</h2>
+    
+  </div>
+
+{{#each messages}}
+  {{> message}}
+{{/each}}
+</template>
+
+<template name="message">
+<p>
+  <strong>{{name}}:</strong> {{message}}<br>
+  <time class="" datetime="{{ts}}">@{{ formatTime ts }}</time>
+</p>
+</template>
