@@ -1,73 +1,22 @@
 <body>
   {{> body}}
-  {{> status}}
 </body>
 
-
-
+<!-- body -->
 <template name="body">
 <div class="pure-g-r " id="layout">
 
   {{> menu }}
         
-<div class="pure-u" id="main">
+<div class="pure-u-1" id="main">
 
   <div class="content">
   {{renderPage layoutName}}
   </div>
 
-
 </div> <!-- main -->
 </div> <!-- layout -->
-
 </template>
 
 
-
-<template name="status">
-  <p>
-    {{ status }}
-  </p>
-</template>
-
-<template name="footer">
-<div class="legal pure-g-r">
-    <div class="pure-u-2-5">
-        <div class="l-box">
-            <p class="legal-license">
-                This site is built with &lt;3 using Pure v0.1.0
-            </p>
-            <p class="legal-license">
-                All code on this site is licensed under the <a href="http://yuilibrary.com/license/">BSD License</a> unless stated otherwise.
-            </p>
-        </div>
-    </div>
-
-    <div class="pure-u-1-5">
-        <div class="l-box legal-logo">
-            <a href="http://yuilibrary.com/">
-                <img src="/img/logo-footer.png" height="30" width="65"
-                     alt="YUI logo">
-            </a>
-        </div>
-    </div>
-
-    <div class="pure-u-2-5">
-        <div class="l-box">
-            <ul class="legal-links pure-g">
-                <li class='pure-u-1-2'>
-                    <a href="https://github.com/yui/pure/">GitHub Project</a>
-                </li>
-                <li class='pure-u-1-2'>
-                    <a href="http://yuilibrary.com/security/">Security Contact Info</a>
-                </li>
-            </ul>
-
-            <p class="legal-copyright">
-                &copy; 2013 Yahoo! Inc. All rights reserved.
-            </p>
-        </div>
-    </div>
-</div>
-</template>
 

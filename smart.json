@@ -1,6 +1,7 @@
 {
   "packages": {
     "moment": {},
-    "router": {}
+    "router": {},
+    "spin": {}
   }
 }

@@ -1,0 +1,13 @@
+<template name="settings">
+  <div class="header">
+      <h1 class="pure-u-1">About me</h1>    
+  </div>
+
+  <form class="pure-form settings-form">
+    <input name="username" type="text" class="pure-input-1-2" placeholder="Username"
+        value="{{ session 'username'}}">
+
+    <button type="submit" class="save pure-button pure-input-1-2 pure-button-primary">Save</button>
+</form>
+
+</template>

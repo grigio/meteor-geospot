@@ -1,0 +1,22 @@
+/* arrow active selection */
+li.pure-menu-selected:after {
+  height: 0;
+  width: 0;
+  position: absolute;
+  border: 15px solid transparent; /* arrow size */
+  transform: rotate(30deg);
+  -webkit-transform: rotate(-90deg); /* Safari and Chrome */
+  transform: rotate(-90deg); /* Safari and Chrome */
+  left: 120px;
+  border-bottom-color: white;  /* arrow color */
+  content: " ";
+  margin-top: -35px;
+}
+
+.entry-box {
+  border-top: 1px solid #eee;
+}
+
+.pure-button-small {
+  font-size: 85%;
+}

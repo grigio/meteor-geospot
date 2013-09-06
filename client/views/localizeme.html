@@ -1,17 +1,49 @@
 <template name="localizeme">
 
-this is localizeme
+<div class="header">
+    <h1>Location</h1>    
+</div>
 
-<button id="localizeme">
-Localize me
-</button>
+<div class="pure-g-r">
 
-your position is: {{ position }}
+  {{> mapInfo }}
 
-url home {{ home }}
+  {{> mapCanvas }}
 
-<h1>Map</h1>
+</div>
+</template>
+
+
+<template name="mapCanvas">
+  <div class="pure-u-1-2">
+    <p><div style="width:300px; height:300px;" id="map-canvas"></div></p>
+  </div>
+</template>
+
+<template name="mapInfo">
+  <div class="pure-u-1-2">
+    <p>
+      {{#if session 'default-chat' }}
+        Your current Chat area is: <b>{{ session 'default-chat' }}</b>.<br>
+        Drag the marker if you want to change the place or press <i>Localize</i> again to reset the position.
+      {{ else }}
+        Enable the geolocalization and press the "Localize" button to set your chat area.
+      {{/if }}
+    </p>
     
-    <div style="width:400px; height:400px;" id="map-canvas"></div>
+    <p>
+      <a class="pure-button pure-u-1-2" id="localizeme">
+          <i class="icon-map-marker"> </i>Localize
+      </a>
+    </p>
 
+    {{#if session 'default-chat' }}
+    <p>
+      <a class="js-link pure-button-primary pure-button pure-u-1-2"
+         href="/s/{{ session 'default-chat' }}">
+        Go to the chat
+      </a>
+    </p>
+    {{/if }}
+  </div>
 </template>
