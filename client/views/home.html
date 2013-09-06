@@ -1,5 +1,39 @@
 <template name="home">
 
-this is home
+<div class="hero">
+  <h1>
+    <i class="icon-comments icon-large"></i> Geospot
+  </h1>
+  <h2 class="pure-u-4-4 l-centered">The pleasure to chat with strangers nearby is back to internet
+    <ul>
+      <li><i class="icon-comments"> </i>Geospot is a LBS and Hyper Local Chat to connect in realtime with the people around you.</li>
+      <li><i class="icon-unlock"> </i><u>No registration</u>, logins, email confirmations</li>
+      <li><i class="icon-location-arrow"> </i><u>No precise position shared</u> without consensus</li>
+      <li><i class="icon-warning-sign"> </i><u>No warranties</u>, use your brain against phishing, scammers,..</li>
+      <li><i class="icon-globe"> </i>Available everywhere also in China, Iran, Mid-East,..</li>
+      <li>Limited data retention, <i class="icon-time"> </i><u>72h lifetime messages</u></li>
+      <li><i class="icon-ok"> </i>Mobile friendly, responsive design</li>
+      <li><i class="icon-ok"> </i>No App Store, Play or marketplace account required </li>
+      <li><i class="icon-ok"> </i>Free and Open Source on <a href="http://github.com/grigio/meteor-geospot"><i class="icon-github"> </i>github</a></li>
+    </ul>
+  </h2>
+</div>
+  
+  <div id="maphome" style="width:95%; height:200px;">
+    Mapview
+  </div>
+
+  <h1 style="margin-left: 195px;"><i class="icon-hand-down icon-large"></i></h1>
+  <p>
+    Wanna try? just 
+    <a class="js-link pure-button pure-button-primary" href="/localizeme">
+      Set your Location
+    </a>
+    and enjoy.
+  </p>
+
+  <p style="margin-left:30px;margin-top:60px;">
+    <img src="http://api.qrserver.com/v1/create-qr-code/?data={{ session 'home-url' }}&size=250x250" />
+  </p>
 
 </template>

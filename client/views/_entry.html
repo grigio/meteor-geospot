@@ -1,6 +1,23 @@
 <template name="entry">
-<p>
-  <input type="text" id="name" placeholder="your name"/>
-  <input type="text" id="messageBox" placeholder="y messgae" />
-</p>
+
+  <div class="pure-g-r entry-box" style="">
+    <p>
+    <div class="pure-u-2-3 pure-form">
+        <input type="text" class="pure-input-1" id="messageEntry" placeholder="message" />
+    </div>
+      <div class="pure-u-1-3" style="margin-top:-1px;">
+        {{> localizeMessageButton }}
+        <button id="messageBtnSend" class="pure-button pure-button-small pure-button-primary">Send</button>
+      </div>
+    </p>
+  </div>
+
+</template>
+
+<template name="localizeMessageButton">
+  {{#if session 'currentCoords' }}
+    <button class="pure-button pure-button-primary pure-button-small" id="localizeMessage"><i class="icon-map-marker"> </i></button>
+  {{ else}}
+    <button class="pure-button pure-button-small" id="localizeMessage"><i class="icon-map-marker"> </i></button>
+  {{/if }}
 </template>

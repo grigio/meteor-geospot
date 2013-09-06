@@ -1,18 +1,50 @@
 <template name="messages">
-  <div class="header pure-u-1">
-      <h1 class="pure-u-1">Messages</h1>
-      <h2 class="pure-u">Quickstart your next web project</h2>
-    
+  <div class="header" style="padding:0px;">
+      <h1 class="pure-u-1" style="text-align:right;">
+        <a class="js-link" href="/localizeme">{{ session 'square_id'}}</a>
+        <a class="js-toggle-map" href=""><i class="icon-globe"> </i></a>
+        <a class="js-toggle-scroll" href=""><i class="icon-sort-by-attributes"> </i></a>
+        <a class="" href="https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fgeospot.meteor.com/s/{{ session 'square_id'}}&tw_p=tweetbutton&url=http%3A%2F%2Fgeospot.meteor.com/s/{{ session 'square_id'}}&text=Geospot%20nearby%20chat%20with%20geolocalization&via=grigi0"><i class="icon-twitter"> </i></a>
+      </h1>
+      {{#if session 'mapview'}}
+      <div id="mapview" style="width:95%; height:200px;">
+        Mapview
+      </div>
+      {{/if }}
+      
   </div>
 
-{{#each messages}}
-  {{> message}}
-{{/each}}
+  <div id="foo" class="overthrow">
+    {{#if messages}}
+      {{#each messages}}
+        {{> message}}
+      {{/each}}
+    {{ else }}
+      
+      <h1 class="l-centered">
+        <span style="font-size:100px;">:(</span>
+      </h1>
+      <h2>No messages in the last 24h in the "{{ session 'square_id' }}" chat area</h2>
+      <p>
+        Start a conversation or try another location nearby dragging the marker on the map.
+      </p>
+      <a class="js-link pure-button" href="/localizeme">
+        Change Location
+      </a>
+    {{/if }}
+  </div>
+
 </template>
 
 <template name="message">
-<p>
-  <strong>{{name}}:</strong> {{message}}<br>
-  <time class="" datetime="{{ts}}">@{{ formatTime ts }}</time>
-</p>
+<div>
+  <small style="margin-left:30%;margin-top:10px;position:relative;">
+    <time  datetime="{{ts}}">{{ formatTime ts }}</time>
+  </small><br>
+  {{message}}
+  {{#if lat}}
+    <small><i class="icon-location-arrow"/></small>
+  {{/if}}<br>
+  <strong><i class="icon-user"> </i>{{name}}</strong>
+</div>
 </template>

@@ -7,54 +7,23 @@
 
 <div class="pure-u" id="menu">
     <div class="pure-menu pure-menu-open">
-        <a class="pure-menu-heading" href="/">Geochat S</a>
+        <a class="pure-menu-heading" href="/"><i class="icon-comments"> </i>Geospot</a>
 
         <ul>
-          
-            <li class=" ">
-                <a href="/s/torino">Torino</a>
+            <li class="js-settings">
+                <a class="js-link" href="/settings">{{ session 'username' }}</a>
             </li>
           
-            <li class=" ">
-                <a href="/grids/">Grids</a>
-            </li>
-          
-            <li class=" ">
-                <a href="/forms/">Forms</a>
-            </li>
-          
-            <li class=" ">
-                <a href="/buttons/">Buttons</a>
-            </li>
-          
-            <li class=" ">
-                <a href="/tables/">Tables</a>
-            </li>
-          
-            <li class=" ">
-                <a href="/menus/">Menus</a>
-            </li>
-          
-            <li class=" menu-item-divided">
-                <a href="/customize/">Customize</a>
-            </li>
-          
-            <li class=" ">
-                <a href="/extend/">Extend</a>
-            </li>
-          
-            <li class="pure-menu-selected ">
-                <a href="/layouts/">Layouts</a>
-            </li>
-          
-
-            <li class="menu-item-divided">
-                <a href="http://yui.github.io/skinbuilder/?mode=pure">Skin Builder</a>
+            <li class="js-localizeme">
+                <a class="js-link" href="/localizeme/">Location</a>
             </li>
 
-            <li>
-                <a href="http://yuilibrary.com/">YUI Library</a>
+            {{#if session 'default-chat'}}
+            <li class="js-chat">
+               <a class="js-link" href="/s/{{ session 'default-chat' }}">Chat ({{ session 'currRoomSize' }})</a>
             </li>
+            {{/if }}
+
         </ul>
     </div>
 </div> <!-- menu -->

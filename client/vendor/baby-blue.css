@@ -121,7 +121,7 @@ aside {
 /* The content div is placed as a wrapper around all the docs */
 .content {
     margin: 0 auto;
-    width: 70%;
+    width: 90%;
     margin-bottom:50px;
 }
     .content p {
