@@ -18,39 +18,43 @@ Template.home.rendered = function() {
 
     // FIXME: error in 1st render & duplication with localize
       map = new google.maps.Map(document.getElementById("maphome"), myOptions);
+      // HACK: very dirty data not ready
+      Meteor.setTimeout(function () {
 
-      // add geolocalized messages
-      if (typeof activeGeohashes !== "undefined"){
-        _(activeGeohashes).each(function (gh) {
-          var geo = geohash.decode(gh);
-          var el = {
-            lat: geo[0], lon:geo[1], ghash:gh
-          };
+        // add geolocalized messages
+        if (typeof activeGeohashes !== "undefined"){
+          _(activeGeohashes).each(function (gh) {
+            var geo = geohash.decode(gh);
+            var el = {
+              lat: geo[0], lon:geo[1], ghash:gh
+            };
 
-          // FIX: bad coords
-          //console.log('a-'+el.lon+" "+el.lat);
-          var marker = new google.maps.Marker({
-            position: new google.maps.LatLng(el.lat, el.lon),
-            draggable: false,
-            map: map
+            // FIX: bad coords
+            //console.log('a-'+el.lon+" "+el.lat);
+            var marker = new google.maps.Marker({
+              position: new google.maps.LatLng(el.lat, el.lon),
+              draggable: false,
+              map: map
+            });
+
+            // infowindow
+            var infowindow = new google.maps.InfoWindow({
+                content: '<div style="text-align:left;"><b><i class="icon-user"> </i>Chat Area</b><br><a href="/s/'+el.ghash+'">Go to this chat!</a><br><small></small></div>'
+            });
+            google.maps.event.addListener(marker, 'click', function() {
+              infowindow.open(map,marker);
+            });
+
+            markersArray.push(marker);
+            
+            // var markerCluster = new MarkerClusterer(map, markers);
           });
 
-          // infowindow
-          var infowindow = new google.maps.InfoWindow({
-              content: '<div style="text-align:left;"><b><i class="icon-user"> </i>Chat Area</b><br><a href="/s/'+el.ghash+'">Go to this chat!</a><br><small></small></div>'
-          });
-          google.maps.event.addListener(marker, 'click', function() {
-            infowindow.open(map,marker);
-          });
+          map.setCenter(mapCenter);
 
-          markersArray.push(marker);
-          
-          // var markerCluster = new MarkerClusterer(map, markers);
-        });
+          var markerCluster = new MarkerClusterer(map, markersArray);
 
-        map.setCenter(mapCenter);
+        }
 
-        var markerCluster = new MarkerClusterer(map, markersArray);
-
-      }
+      }, 2000); // fucking dirty timeout
 }
