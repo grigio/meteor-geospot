@@ -26,8 +26,12 @@ Meteor.startup(function () {
   Session.set('home-url', Meteor.Router.homeUrl());
   Session.set('mapview', false);
 
-  r = function (cmd) {
-    Meteor.call('exec', cmd);
+  sconsole = {
+    'log': function (cmd) {
+      Meteor.call('exec', cmd, function (err,data) {
+        console.log('server: '+data);
+      });
+    }
   }
 
 });

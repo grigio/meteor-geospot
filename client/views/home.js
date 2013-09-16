@@ -1,10 +1,12 @@
   Meteor.autorun(function() {
+      Meteor.call('activeGeohashes',function (err,data) {
+        // console.log(data);
+        activeGeohashes = data;
+      });
     Meteor.subscribe('messages', 'global' );
   });
 
 Template.home.rendered = function() {
-  curRoomG = Messages.findOne({_id:'global'} );
-
   markersArray = [];
 
     var mapCenter = new google.maps.LatLng(45.0,7.5);
@@ -18,28 +20,35 @@ Template.home.rendered = function() {
       map = new google.maps.Map(document.getElementById("maphome"), myOptions);
 
       // add geolocalized messages
-      if (typeof curRoomG !== "undefined"){
-        _(curRoomG.messages).each(function (el) {
-          if (typeof el.lat !== 'undefined') {
-            var marker = new google.maps.Marker({
-              position: new google.maps.LatLng(el.lat, el.lon),
-              draggable: false,
-              map: map
-            });
+      if (typeof activeGeohashes !== "undefined"){
+        _(activeGeohashes).each(function (gh) {
+          var geo = geohash.decode(gh);
+          var el = {
+            lat: geo[0], lon:geo[1], ghash:gh
+          };
 
-            // infowindow
-            var infowindow = new google.maps.InfoWindow({
-                content: '<div style="text-align:left;"><b><i class="icon-user"> </i> '+el.name+'</b><br>'+el.message+'<br><small>'+moment(el.ts).fromNow()+'</small></div>'
-            });
-            google.maps.event.addListener(marker, 'click', function() {
-              infowindow.open(map,marker);
-            });
+          // FIX: bad coords
+          //console.log('a-'+el.lon+" "+el.lat);
+          var marker = new google.maps.Marker({
+            position: new google.maps.LatLng(el.lat, el.lon),
+            draggable: false,
+            map: map
+          });
 
-            markersArray.push(marker);
-          }
+          // infowindow
+          var infowindow = new google.maps.InfoWindow({
+              content: '<div style="text-align:left;"><b><i class="icon-user"> </i>Chat Area</b><br>'+el.ghash+'<br><small></small></div>'
+          });
+          google.maps.event.addListener(marker, 'click', function() {
+            infowindow.open(map,marker);
+          });
+
+          markersArray.push(marker);
+          
           // var markerCluster = new MarkerClusterer(map, markers);
-          map.setCenter(mapCenter);
         });
+
+        map.setCenter(mapCenter);
 
         var markerCluster = new MarkerClusterer(map, markersArray);
 
