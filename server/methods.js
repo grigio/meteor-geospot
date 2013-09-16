@@ -11,9 +11,11 @@ Meteor.methods({
   purgeChatOld: function () {
     purgeChatOld();
   },
-  // FIXME: dangerous but useful to debug commands on the server
-  // exec: function (cmd) {
-  //   console.log(cmd);
-  //   eval(cmd);
-  // }
+  // dangerous but useful to debug commands on the server
+  exec: function (cmd) {
+    if (process.env.APP_ENV === 'development') {
+      console.log(cmd);
+      eval(cmd);
+    }
+  }
 });
