@@ -13,5 +13,7 @@ Template.settings.events = {
       console.log(el.name, el.value);
     });
 
+    Meteor.Router.to('/localizeme');
+
   }
 }
