@@ -37,7 +37,7 @@ Template.home.rendered = function() {
 
           // infowindow
           var infowindow = new google.maps.InfoWindow({
-              content: '<div style="text-align:left;"><b><i class="icon-user"> </i>Chat Area</b><br>'+el.ghash+'<br><small></small></div>'
+              content: '<div style="text-align:left;"><b><i class="icon-user"> </i>Chat Area</b><br><a href="/s/'+el.ghash+'">Go to this chat!</a><br><small></small></div>'
           });
           google.maps.event.addListener(marker, 'click', function() {
             infowindow.open(map,marker);
