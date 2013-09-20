@@ -1,10 +1,10 @@
   
   cleanMarkers = function () {
-    if (markersArray) {
-      for (i in markersArray) {
-        markersArray[i].setMap(null);
+    if (markersArrayh) {
+      for (i in markersArrayh) {
+        markersArrayh[i].setMap(null);
       }
-    markersArray.length = 0;
+    markersArrayh.length = 0;
     }
   }
 
@@ -32,28 +32,18 @@
           infowindow.open(map,marker);
         });
 
-        markersArray.push(marker);
+        markersArrayh.push(marker);
       });
-     var markerCluster = new MarkerClusterer(map, markersArray);
+     var markerCluster = new MarkerClusterer(map, markersArrayh);
     }
   }
 
   Meteor.autorun(function() {
   });
 
-  // just to ensure gmap is loaded
-  Meteor.setTimeout(function () {
-    // body...
-    Meteor.call('activeGeohashes',function (err,data) {
-      console.log(data);
-      Session.set('activeGeohashes', data);
-      cleanMarkers();
-      placeMarkers();
-    });
-  }, 5000);
 
 Template.home.rendered = function() {
-  markersArray = [];
+  markersArrayh = [];
 
     var mapCenter = new google.maps.LatLng(45.0,7.5);
     var myOptions = {
@@ -64,4 +54,16 @@ Template.home.rendered = function() {
 
     // FIXME: error in 1st render & duplication with localize
     map = new google.maps.Map(document.getElementById("maphome"), myOptions);
+
+    // just to ensure gmap is loaded
+    Meteor.setTimeout(function () {
+      // body...
+      Meteor.call('activeGeohashes',function (err,data) {
+        // console.log(data);
+        Session.set('activeGeohashes', data);
+        // cleanMarkers();
+        placeMarkers();
+      });
+    }, 3000);
+
 }
