@@ -1,5 +1,5 @@
 // expanded message view
-expanded = false;
+expanded = true; // BUG: Firefox doesn't like overthrow :(
 
 
 toggleScroll = function (argument) {
@@ -78,6 +78,21 @@ Template.messages.rendered = function() {
    */
   Meteor.autorun(function() {
     Meteor.subscribe('messages', Session.get('square_id') );
+  });
+
+
+  Meteor.startup(function () {
+    Messages.find({_id:Session.get('square_id')} ).observe({
+      'changed': function (id,fields) {
+        if (Visibility.hidden()) {
+          var notification = navigator.mozNotification.createNotification(
+              "New message",
+              "Theres a new message in the area"
+          );
+           notification.show();
+        }
+      }
+    });
   });
 
   Template.messages.events = {
