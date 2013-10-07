@@ -84,6 +84,7 @@ Template.messages.rendered = function() {
   Meteor.startup(function () {
     Messages.find({_id:Session.get('square_id')} ).observe({
       'changed': function (id,fields) {
+        // NOTE: Firefox specific and broken on app reload
         if (Visibility.hidden()) {
           var notification = navigator.mozNotification.createNotification(
               "New message",

@@ -1,4 +1,32 @@
   
+  installApp = function () {
+    // Install app
+    if (navigator.mozApps) {
+        var checkIfInstalled = navigator.mozApps.getSelf();
+        checkIfInstalled.onsuccess = function () {
+            if (checkIfInstalled.result) {
+                // ok
+            }
+            else {
+                var manifestURL = location.href.substring(0, location.href.lastIndexOf("/")) + "/manifest.webapp";
+                // install.className = "show-install";
+                // install.onclick = function () {
+                var installApp = navigator.mozApps.install(manifestURL);
+                installApp.onsuccess = function(data) {
+                    // install.style.display = "none";
+                    alert('Open it from the homescreen');
+                };
+                installApp.onerror = function() {
+                    alert("Install failed\n\n:" + installApp.error.name);
+                };
+            }
+        };
+    }
+    else {
+        console.log("Open Web Apps not supported");
+    }
+  }
+
   cleanMarkers = function () {
     if (markersArrayh) {
       for (i in markersArrayh) {
@@ -43,6 +71,7 @@
 
 
 Template.home.rendered = function() {
+  installApp();
   markersArrayh = [];
 
     var mapCenter = new google.maps.LatLng(45.0,7.5);
