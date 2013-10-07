@@ -1,14 +1,9 @@
 {
     "version": "0.1",
     "name": "Geospot",
-    "launch_path": "index.html",
     "description": "Nearby proximity chat",
     "icons": {
-        "16": "/images/logo16.png",
-        "32": "/images/logo32.png",
-        "48": "/images/logo48.png",
-        "64": "/images/logo64.png",
-        "128": "/images/logo128.png"
+        "128": "/128.png"
     },
     "developer": {
         "name": "Luigi Maselli",
@@ -16,6 +11,8 @@
     },
     "installs_allowed_from": ["*"],
     "default_locale": "en",
+    "chrome":{"navigation":true},
+    "launch_path":"\/",
     "permissions": {
         "desktop-notification": {
             "description" : "To show notifications"
