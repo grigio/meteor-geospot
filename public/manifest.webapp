@@ -3,6 +3,7 @@
     "name": "Geospot",
     "description": "Nearby proximity chat",
     "icons": {
+        "64": "/64.png",
         "128": "/128.png"
     },
     "developer": {
