@@ -20,3 +20,8 @@ li.pure-menu-selected:after {
 .pure-button-small {
   font-size: 85%;
 }
+
+/* NOTE: Firefox app hack */
+#main {
+  background-color: white;
+}
