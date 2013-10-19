@@ -13,13 +13,5 @@
     "installs_allowed_from": ["*"],
     "default_locale": "en",
     "chrome":{"navigation":true},
-    "launch_path":"\/",
-    "permissions": {
-        "desktop-notification": {
-            "description" : "To show notifications"
-        },
-        "geolocation": {
-            "description" : "Marking out user location"
-        }
-    }
+    "launch_path":"\/"
 }
