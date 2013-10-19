@@ -71,7 +71,7 @@
 
 
 Template.home.rendered = function() {
-  installApp();
+  // installApp();
   markersArrayh = [];
 
     var mapCenter = new google.maps.LatLng(45.0,7.5);
