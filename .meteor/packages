@@ -8,6 +8,6 @@ spiderable
 router
 standard-app-packages
 HTML5-History-API
-meteor-geohash
 moment
 page-js-ie-support
+geohash

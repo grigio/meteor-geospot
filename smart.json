@@ -2,6 +2,7 @@
   "packages": {
     "moment": {},
     "router": {},
-    "spin": {}
+    "spin": {},
+    "geohash": {}
   }
 }

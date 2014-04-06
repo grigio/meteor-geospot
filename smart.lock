@@ -4,23 +4,29 @@
     "basePackages": {
       "moment": {},
       "router": {},
-      "spin": {}
+      "spin": {},
+      "geohash": {}
     },
     "packages": {
       "moment": {
-        "git": "https://github.com/possibilities/meteor-moment.git",
-        "tag": "v1.7.0",
-        "commit": "c64b6ec0e714b9556f4b6643d430b868ba69d3d7"
+        "git": "https://github.com/acreeger/meteor-moment.git",
+        "tag": "v2.5.1",
+        "commit": "8c9bc5d3fc96705057737cb9743d555417f6e551"
       },
       "router": {
         "git": "https://github.com/tmeasday/meteor-router.git",
-        "tag": "v0.5.4",
-        "commit": "e40ee450a756b54a32ed67be4595772403256fb5"
+        "tag": "v0.6.0",
+        "commit": "1e2860138402fb288c2fbce70338161f4d86a5d4"
       },
       "spin": {
         "git": "https://github.com/SachaG/meteor-spin.git",
-        "tag": "v0.2.0",
-        "commit": "fd3a2871a69442848b4b4e74f5e1ae28fa4a95a4"
+        "tag": "v0.2.2",
+        "commit": "3f655f0016228e4195acc784c45d3e3a247dc39f"
+      },
+      "geohash": {
+        "git": "https://github.com/grigio/meteor-geohash.git",
+        "tag": "v0.0.5",
+        "commit": "b92a6a4ca19d9f5b5270e22283e7f13bd01fb771"
       },
       "page-js-ie-support": {
         "git": "https://github.com/tmeasday/meteor-page-js-ie-support.git",

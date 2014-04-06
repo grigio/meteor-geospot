@@ -10,7 +10,7 @@ Live at: http://geospot.meteor.com
 
 # Installation
 
-Install `meteor` and `meteorite` and run the `meteor` command.
+Install `meteor` and `meteorite` and run the `meteor --release 0.6.5.1` command.
 
 # License
 
